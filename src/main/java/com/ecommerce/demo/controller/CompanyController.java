@@ -3,10 +3,7 @@ package com.ecommerce.demo.controller;
 import com.ecommerce.demo.entity.Company;
 import com.ecommerce.demo.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,9 +19,14 @@ public class CompanyController {
         this.companyService = companyService;
     }
 
-    @GetMapping("/companies")
+    @GetMapping("/getAllCompanies")
     public List<Company> findAllCompanies() {
         return companyService.getAllCompanies();
+    }
+
+    @PostMapping(value = "/saveCompany", consumes = "application/json")
+    public Company saveCompany(@RequestBody Company company) {
+        return companyService.saveCompany(company);
     }
 
 }

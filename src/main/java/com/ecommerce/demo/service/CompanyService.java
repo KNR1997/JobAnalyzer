@@ -21,4 +21,8 @@ public class CompanyService {
         return companyRepository.findAll();
     }
 
+    public Company saveCompany(Company company) {
+        return companyRepository.save(company);
+    }
+
 }
