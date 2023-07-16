@@ -20,13 +20,18 @@ public class File {
     @Column(name = "FILE_ID")
     private Integer fileID;
 
+    @Column(name = "FILE_PATH")
+    private String filePath;
+
+    @Column(name = "USER_ID")
+    private String userID;
+
     @Column(name = "FILE_NAME")
     private String name;
 
     @Column(name = "FILE_TYPE")
     private String type;
 
-    @Column(name = "FILE_PATH")
-    private String filePath;
+
 
 }

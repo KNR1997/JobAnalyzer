@@ -12,27 +12,29 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class StorageService {
+public class FileService {
 
     private final FileRepository fileRepository;
 
-    public StorageService(FileRepository fileRepository) {
+    public FileService(FileRepository fileRepository) {
         this.fileRepository = fileRepository;
     }
 
-    public void uploadFileToFileSystem(MultipartFile file) throws IOException {
+    public String uploadFile(MultipartFile file, String userID) throws IOException {
 
         String FOLDER_PATH = "C:\\Users\\Kethaka\\Documents\\MyFiles\\";
         String filePath = FOLDER_PATH + file.getOriginalFilename();
 
-        File fileData = fileRepository.save(File.builder()
+        fileRepository.save(File.builder()
                 .name(file.getOriginalFilename())
+                .userID(userID)
                 .type(file.getContentType())
                 .filePath(filePath).build());
 
         file.transferTo(new java.io.File(filePath));
 
         file.getOriginalFilename();
+        return FOLDER_PATH;
     }
 
     public byte[] downloadFile(String fileName) throws IOException {
