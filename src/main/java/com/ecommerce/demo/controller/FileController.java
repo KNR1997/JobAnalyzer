@@ -3,13 +3,11 @@ package com.ecommerce.demo.controller;
 import com.ecommerce.demo.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Map;
 
 @RestController
 @CrossOrigin("http://localhost:3000")
@@ -32,11 +30,11 @@ public class FileController {
         );
     }
 
-    @GetMapping(value = "/{fileName}")
-    public ResponseEntity<?> downloadPDF(@PathVariable String fileName) throws IOException {
-        byte[] fileData = fileService.downloadFile(fileName);
-        return ResponseEntity.status(HttpStatus.OK)
-                .contentType(MediaType.valueOf("image/png"))
-                .body(fileData);
-    }
+//    @GetMapping(value = "/{fileName}")
+//    public ResponseEntity<?> downloadPDF(@PathVariable String fileName) throws IOException {
+//        byte[] fileData = fileService.downloadFile(fileName);
+//        return ResponseEntity.status(HttpStatus.OK)
+//                .contentType(MediaType.valueOf("image/png"))
+//                .body(fileData);
+//    }
 }

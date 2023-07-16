@@ -7,8 +7,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -37,9 +35,9 @@ public class FileService {
         return FOLDER_PATH;
     }
 
-    public byte[] downloadFile(String fileName) throws IOException {
-        Optional<File> fileData = fileRepository.findByName(fileName);
-        String filePath = fileData.get().getFilePath();
-        return Files.readAllBytes(new java.io.File(filePath).toPath());
-    }
+//    public byte[] downloadFile(String fileName) throws IOException {
+//        Optional<File> fileData = fileRepository.findByName(fileName);
+//        String filePath = fileData.get().getFilePath();
+//        return Files.readAllBytes(new java.io.File(filePath).toPath());
+//    }
 }
