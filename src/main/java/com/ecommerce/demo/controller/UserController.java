@@ -30,4 +30,9 @@ public class UserController {
         return userService.getUserFiles(userID);
     }
 
+    @DeleteMapping(value = "/deleteFile/{fileID}")
+    public void deleteUserId(@PathVariable Integer fileID) {
+        userService.deleteUserFile(fileID);
+    }
+
 }

@@ -29,4 +29,8 @@ public class UserService {
         return fileRepository.findByUserID(userId);
     }
 
+    public void deleteUserFile(Integer fileId) {
+        fileRepository.deleteById(fileId);
+    }
+
 }

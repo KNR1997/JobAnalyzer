@@ -1,12 +1,11 @@
 package com.ecommerce.demo.controller;
 
+import com.ecommerce.demo.dto.JobDTO;
 import com.ecommerce.demo.entity.Job;
 import com.ecommerce.demo.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -27,5 +26,10 @@ public class JobController {
         return jobService.getJobs();
     }
 
+    @PostMapping(value = "/addJob")
+    public void saveJob(@RequestBody JobDTO jobDTO) {
+        Job job = jobService.createJobFromDTO(jobDTO);
+        jobService.addJob(job);
+    }
 
 }
